@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        h2 {
+            text-align: center;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            font-weight: 300;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+            color: #c0c0c0;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #e0e0e0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #e94560;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #e94560;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c63c50;
+        }
+        .response-message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 500;
+            height: 20px;
+        }
+        .success {
+            color: #32de84;
+        }
+        .error {
+            color: #ff4d4d;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #a0a0a0;
+            width: 100%;
+            font-weight: 300;
+        }
+        footer a {
+            color: #e94560;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p class="subtitle">This is for testing the server</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="to_email">Your Email</label>
+                    <input type="email" id="to_email" name="to_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="responseMessage" class="response-message"></div>
+        </div>
+    </main>
+
+    <footer>
+        Designed by <a href="http://h190k.com" target="_blank">H190K</a>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const responseMessage = document.getElementById('responseMessage');
+            responseMessage.textContent = '';
+            responseMessage.className = 'response-message';
+
+            const formData = {
+                to_email: document.getElementById('to_email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            fetch('http://127.0.0.1:8000/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                return response.json().then(err => {
+                    throw new Error(err.detail || 'Something went wrong');
+                });
+            })
+            .then(data => {
+                responseMessage.textContent = 'Email sent successfully!';
+                responseMessage.classList.add('success');
+                document.getElementById('contactForm').reset();
+            })
+            .catch(error => {
+                responseMessage.textContent = 'Error: ' + error.message;
+                responseMessage.classList.add('error');
+            });
+        });
+    </script>
+
+</body>
+</html>
