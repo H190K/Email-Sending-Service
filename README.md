@@ -7,8 +7,8 @@ This project provides a simple backend service using FastAPI to send emails and 
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository_url>
-cd Email Sending Service
+git clone https://github.com/H190K/Email-Sending-Service
+cd Email-Sending-Service
 ```
 
 ### 2. Create and Configure the `.env` file
