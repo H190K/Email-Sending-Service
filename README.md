@@ -49,9 +49,9 @@ The application will start, and you will see the endpoint URL in the console (e.
 ## HTML Form Setup
 
 To use this service with an HTML form, you can use JavaScript to send a POST request to the `/send` endpoint.
-```
-You can use the included `index.html` to test the email sending functionality.
-```
+
+You can use the included [`index.html`](https://github.com/h190k/Email-Sending-Service/blob/main/index.html) to test the email sending functionality.
+
 
 **Key points for the HTML form:**
 
