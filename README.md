@@ -325,8 +325,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 Love this worker? Here's how you can help:
 
 - 🍴 **Fork it** and add your own features
-- 🐛 **Report bugs** or suggest improvements via [GitHub Issues](https://github.com/H190K/email-sending-worker/issues)
-- 📢 **Share it** with developers who need serverless contact forms
+- 🐛 **Report bugs** or suggest improvements via [GitHub Issues](https://github.com/H190K/Email-Sending-Service/issues)
+- 📢 **Share it** with developers who You think might need this
 - ⭐ **Star the repo** to show your support
 
 If my projects make your life easier, consider buying me a coffee! Your support helps me create more open-source tools for the community.
