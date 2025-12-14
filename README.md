@@ -3,7 +3,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue?style=flat-square&logo=python)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
-[![GitHub](https://img.shields.io/badge/GitHub-H190K/Email--Sending--Service-black?style=flat-square&logo=github)](https://github.com/H190K/Email-Sending-Service)
+[![GitHub](https://img.shields.io/badge/GitHub-H190K/Email--Sending--Service-black?style=flat-square&logo=github)](https://github.com/H190K/Email-Fetching-Service)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=flat-square)]()
 
 A production-ready FastAPI backend service for handling multiple dynamic forms with email forwarding, CAPTCHA verification, and domain whitelisting.
@@ -11,7 +11,7 @@ A production-ready FastAPI backend service for handling multiple dynamic forms w
 ## Features
 
 - **Multiple Forms**: Support for unlimited dynamic forms (contact, support, newsletter, etc.)
-- **Email Forwarding**: Sends form submissions directly to your inbox via Gmail
+- **Email Forwarding**: Fetches form submissions and forwards them directly to your inbox via Gmail
 - **CAPTCHA Protection**: Optional Turnstile or reCAPTCHA verification
 - **Domain Whitelisting**: Only accept submissions from authorized domains
 - **CORS Protection**: Configure which origins can access the API
@@ -20,15 +20,16 @@ A production-ready FastAPI backend service for handling multiple dynamic forms w
 ## Prerequisites
 
 - Python 3.8+
-- Gmail account with 2-Factor Authentication enabled
+- Gmail account with 2-Factor Authentication enabled (ideal for small businesses due to free tier email forwarding)
 - (Optional) Turnstile or reCAPTCHA account for CAPTCHA
+
 
 ## Setup Instructions
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/H190K/Email-Sending-Service
+git clone https://github.com/H190K/Email-Fetching-Service
 cd Email-Sending-Service
 ```
 
