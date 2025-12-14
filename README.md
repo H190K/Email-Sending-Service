@@ -28,7 +28,7 @@ A production-ready FastAPI backend service for handling multiple dynamic forms w
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/H190K/Email-Sending-Service
+git clone https://github.com/H190K/Email-Fetching-Service
 cd Email-Sending-Service
 ```
 
