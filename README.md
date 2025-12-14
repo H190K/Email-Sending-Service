@@ -3,15 +3,15 @@
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue?style=flat-square&logo=python)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
-[![GitHub](https://img.shields.io/badge/GitHub-H190K/Email--Sending--Service-black?style=flat-square&logo=github)](https://github.com/H190K/Email-Fetching-Service)
+[![GitHub](https://img.shields.io/badge/GitHub-H190K/Email--Fetching--Service-black?style=flat-square&logo=github)](https://github.com/H190K/Email-Fetching-Service)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=flat-square)]()
 
-A production-ready FastAPI backend service for handling multiple dynamic forms with email forwarding, CAPTCHA verification, and domain whitelisting.
+A production-ready FastAPI backend service for fetching and processing form submissions from dynamic forms, then forwarding them to your email inbox via Gmail. This service provides a free solution for small businesses to collect and manage form data securely.
 
 ## Features
 
-- **Multiple Forms**: Support for unlimited dynamic forms (contact, support, newsletter, etc.)
-- **Email Forwarding**: Fetches form submissions and forwards them directly to your inbox via Gmail
+- **Form Fetching**: Automatically collects and processes submissions from multiple dynamic forms (contact, support, newsletter, etc.)
+- **Email Forwarding**: Forwards fetched form submissions directly to your inbox via Gmail
 - **CAPTCHA Protection**: Optional Turnstile or reCAPTCHA verification
 - **Domain Whitelisting**: Only accept submissions from authorized domains
 - **CORS Protection**: Configure which origins can access the API
@@ -20,9 +20,8 @@ A production-ready FastAPI backend service for handling multiple dynamic forms w
 ## Prerequisites
 
 - Python 3.8+
-- Gmail account with 2-Factor Authentication enabled (ideal for small businesses due to free tier email forwarding)
+- Gmail account with 2-Factor Authentication enabled
 - (Optional) Turnstile or reCAPTCHA account for CAPTCHA
-
 
 ## Setup Instructions
 
@@ -30,7 +29,7 @@ A production-ready FastAPI backend service for handling multiple dynamic forms w
 
 ```bash
 git clone https://github.com/H190K/Email-Fetching-Service
-cd Email-Sending-Service
+cd Email-Fetching-Service
 ```
 
 ### 2. Install Dependencies
@@ -38,6 +37,8 @@ cd Email-Sending-Service
 ```bash
 pip install -r requirements.txt
 ```
+
+**Note**: This service uses Gmail's free tier, making it perfect for small businesses and personal projects. The Gmail App Password system allows secure server-side form data fetching and forwarding without exposing your main password.
 
 ### 3. Create and Configure `.env` File
 
@@ -66,7 +67,7 @@ TURNSTILE_SECRET_KEY=your_turnstile_secret_key_here
 
 ### 4. Get Gmail App Password
 
-Since you're using Gmail:
+Since you're using Gmail for free email forwarding:
 
 1. Enable 2-Step Verification on your Google Account if not already enabled
 2. Go to [myaccount.google.com/security](https://myaccount.google.com/security)
@@ -75,7 +76,7 @@ Since you're using Gmail:
 5. Google will generate a 16-character password
 6. Copy this password to your `.env` file as `GMAIL_APP_PASSWORD`
 
-**Important**: Use the App Password, NOT your Gmail password.
+**Important**: Use the App Password, NOT your Gmail password. This allows the service to securely fetch form submissions and forward them to your inbox.
 
 ### 5. (Optional) Set Up CAPTCHA
 
@@ -98,7 +99,7 @@ Since you're using Gmail:
 python main.py
 ```
 
-The API will start at `http://0.0.0.0:8000`
+The API will start at `http://0.0.0.0:8000` and will begin fetching form submissions from your configured forms.
 
 ## API Endpoints
 
@@ -142,6 +143,8 @@ Content-Type: application/json
   "origin": "https://yourdomain.com"
 }
 ```
+
+The service will fetch the form submission and forward it to your Gmail inbox.
 
 ## HTML Form Integration
 
@@ -276,6 +279,8 @@ Set these in your hosting platform's environment variables section:
 - `TURNSTILE_SECRET_KEY` (optional)
 - `RECAPTCHA_SECRET_KEY` (optional)
 
+**Cost-effective solution**: Gmail's free tier makes this service ideal for small businesses looking to collect form submissions without monthly fees.
+
 ## Security Best Practices
 
 - Never commit `.env` file to git (use `.gitignore`)
@@ -323,11 +328,11 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 💖 Support the Project
 
-Love this worker? Here's how you can help:
+Love this form fetching service? Here's how you can help:
 
-- 🍴 **Fork it** and add your own features
-- 🐛 **Report bugs** or suggest improvements via [GitHub Issues](https://github.com/H190K/Email-Sending-Service/issues)
-- 📢 **Share it** with developers who You think might need this
+- 🍴 **Fork it** and add your own form templates
+- 🐛 **Report bugs** or suggest improvements via [GitHub Issues](https://github.com/H190K/Email-Fetching-Service/issues)
+- 📢 **Share it** with small businesses who need free form submission handling
 - ⭐ **Star the repo** to show your support
 
 If my projects make your life easier, consider buying me a coffee! Your support helps me create more open-source tools for the community.
